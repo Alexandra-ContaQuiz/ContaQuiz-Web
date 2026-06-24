@@ -54,7 +54,7 @@ export default async function handler(req, res) {
     }
 
     const { amount, currency, descripcion } = PRECIOS[plan];
-    const merchantTradeNo = `CQ-${uid.slice(0, 8)}-${Date.now()}`;
+    const merchantTradeNo = `CQ${uid.replace(/[^a-zA-Z0-9]/g, "").slice(0, 10)}${Date.now()}`.slice(0, 32);
 
     const bodyObj = {
       env: { terminalType: "WEB" },
